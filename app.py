@@ -95,10 +95,10 @@ def evaluate_holdout(data):
     test = featured.iloc[split:]
 
     model = RandomForestRegressor(
-        n_estimators=200,
+        n_estimators=40,
         random_state=42,
         min_samples_leaf=2,
-        n_jobs=-1,
+        n_jobs=1,
     )
     model.fit(train[FEATURES], train["PJME_MW"])
     predictions = model.predict(test[FEATURES])
