@@ -337,7 +337,7 @@ with tab_evaluation:
         hovermode="x unified",
         height=450,
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
     st.caption(
         "This is a chronological holdout evaluation. Forecast-tab predictions are recursive "
         "and are a different task from this one-step holdout evaluation."
