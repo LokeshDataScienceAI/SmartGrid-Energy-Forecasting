@@ -71,7 +71,7 @@ def make_features(frame):
 def train_model(data_signature, feature_frame):
     # data_signature is passed so Streamlit invalidates cache when data changes.
     model = RandomForestRegressor(
-        n_estimators=250,
+        n_estimators=40,
         random_state=42,
         min_samples_leaf=2,
         n_jobs=-1,
@@ -87,6 +87,7 @@ def build_model(data):
     return model, feature_frame
 
 
+@st.cache_data
 def evaluate_holdout(data):
     featured = make_features(data)
     split = int(len(featured) * 0.8)
