@@ -294,7 +294,7 @@ with tab_forecast:
             use_container_width=True,
         )
 
-        st.dataframe(forecast, use_container_width=True, hide_index=True)
+        st.dataframe(forecast, width="stretch", hide_index=True)
         csv_data = forecast.to_csv(index=False).encode("utf-8")
         st.download_button(
             "Download Forecast CSV",
