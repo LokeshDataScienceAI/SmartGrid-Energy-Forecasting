@@ -221,12 +221,12 @@ with tab_overview:
         f"**Data period:** {dataset['Datetime'].min():%Y-%m-%d %H:%M} to "
         f"{dataset['Datetime'].max():%Y-%m-%d %H:%M}"
     )
-    st.dataframe(dataset.tail(10), use_container_width=True)
+    st.dataframe(dataset.tail(10), width="stretch")
 
     daily = dataset.set_index("Datetime")["PJME_MW"].resample("D").mean().dropna().reset_index()
     st.plotly_chart(
         make_line_chart(daily, "Datetime", "PJME_MW", "Daily Average Electricity Demand"),
-        use_container_width=True,
+        width="stretch",
     )
 
 with tab_forecast:
