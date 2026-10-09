@@ -68,7 +68,7 @@ def make_features(frame):
 
 
 @st.cache_resource
-def train_model(data_signature, feature_frame):
+def train_model(data_signature, _feature_frame):
     # data_signature is passed so Streamlit invalidates cache when data changes.
     model = RandomForestRegressor(
         n_estimators=40,
@@ -76,7 +76,7 @@ def train_model(data_signature, feature_frame):
         min_samples_leaf=2,
         n_jobs=1,
     )
-    model.fit(feature_frame[FEATURES], feature_frame["PJME_MW"])
+    model.fit(feature_frame[FEATURES], _feature_frame["PJME_MW"])
     return model
 
 
@@ -292,7 +292,7 @@ with tab_forecast:
                 "Predicted Demand (MW)",
                 f"Predicted Electricity Demand — {horizon} Hours",
             ),
-            use_container_width=True,
+            width="stretch",
         )
 
         st.dataframe(forecast, width="stretch", hide_index=True)
