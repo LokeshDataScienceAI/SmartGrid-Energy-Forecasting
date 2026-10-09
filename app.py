@@ -74,7 +74,7 @@ def train_model(data_signature, feature_frame):
         n_estimators=40,
         random_state=42,
         min_samples_leaf=2,
-        n_jobs=-1,
+        n_jobs=1,
     )
     model.fit(feature_frame[FEATURES], feature_frame["PJME_MW"])
     return model
